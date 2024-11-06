@@ -6,32 +6,31 @@ body {
     justify-content: center;
 }
 
-.container, .btn, .display, .equal {
+.container, .btn, .display, #equal {
     border: 1px solid black;
 }
 
 .container {
     width: 400px;
-}
-
-.display {
-    height: 80px;
-}
-
-.btn-group {
-    display: flex;
-}
-
-.number-group {
-    display: flex;
-    flex-wrap: wrap;
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(7, 1fr);
 }
 
 .btn {
-    width: 100px;
-    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.equal {
-    width: 100px;
+#display {
+    grid-column: 1 / 5;
+    grid-row: 1 / 3;
 }
+
+#equal {
+    grid-area: 4 / 4 / 8 / 5;
+
+}
+

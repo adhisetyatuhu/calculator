@@ -9,11 +9,25 @@ body {
     background-color: rgb(24, 118, 169);
 }
 
+.container {
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px rgb(55, 55, 55);
+}
+
 .btn, #display, #equal {
-    border: 1px solid black;
+    border: 0.5px solid rgb(139, 139, 139);
+}
+
+.btn-click {
+    box-shadow: 0 0 5px rgb(201, 201, 201) inset;
+}
+
+.btn-darkgray-click {
+    box-shadow: 0 0 5px rgb(110, 110, 110) inset;
 }
 
 #display {
+    border-color: black;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
 }
@@ -45,7 +59,7 @@ body {
 }
 
 .btn-darkgray {
-    background-color: #ddd;
+    background-color: #d9d9d9;
 }
 
 #display {

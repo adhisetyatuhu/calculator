@@ -9,6 +9,7 @@ body {
     background-color: rgb(24, 118, 169);
 }
 
+/* border */
 .container {
     border-radius: 10px;
     box-shadow: 10px 10px 5px rgb(55, 55, 55);
@@ -16,18 +17,6 @@ body {
 
 .btn, #display, #equal {
     border: 0.5px solid rgb(139, 139, 139);
-}
-
-.btn-gray:active {
-    box-shadow: 0 0 5px rgb(201, 201, 201) inset;
-}
-
-.btn-darkgray:active {
-    box-shadow: 0 0 5px rgb(110, 110, 110) inset;
-}
-
-#equal:active {
-    box-shadow: 0 0 3px rgb(14, 14, 14) inset;
 }
 
 #display {
@@ -43,27 +32,29 @@ body {
 #num-0 {
     border-bottom-left-radius: 10px;
 }
+/* --end border */
 
+/* box-shadow when clicked */
+.btn-num:active, .btn-ac:active {
+    box-shadow: 0 0 5px rgb(201, 201, 201) inset;
+}
+
+.btn-operator:active {
+    box-shadow: 0 0 3px rgb(110, 110, 110) inset;
+}
+
+#equal:active {
+    box-shadow: 0 0 3px rgb(14, 14, 14) inset;
+}
+/* --end box-shadow */
+
+/* grid */
 .container {
     width: 400px;
     height: 400px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(7, 1fr);
-}
-
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-gray {
-    background-color: #fff;
-}
-
-.btn-darkgray {
-    background-color: #d9d9d9;
 }
 
 #display {
@@ -82,4 +73,20 @@ body {
     grid-area: 4 / 4 / 8 / 5;
     background-color: rgb(240, 117, 29);
 }
+/* --end grid */
 
+/* btn styling */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-num, .btn-ac {
+    background-color: #fff;
+}
+
+.btn-operator {
+    background-color: #d9d9d9;
+}
+/* --end btn styling */

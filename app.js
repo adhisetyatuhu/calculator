@@ -7,6 +7,16 @@ function getValue(node) {
     return node.textContent;
 }
 
+function getLastNum() {
+    const value = getValue(displayNode);
+    let lastNum = value.split('+').pop();
+    lastNum = lastNum.split('-').pop();
+    lastNum = lastNum.split('x').pop();
+    lastNum = lastNum.split('/').pop();
+
+    return lastNum;
+}
+
 function validateInput(input) {
     /**  
      * It will check if the input is valid 
@@ -27,6 +37,11 @@ function validateInput(input) {
         if (isNaN(lastInput)) {
             return displayedValue.slice(0, -1) + input;  
         } 
+    }
+
+    if (input === '.') {
+        const lastNum = getLastNum();
+        if (lastNum.indexOf('.') >= 0) return displayedValue;
     }
 
     return displayedValue + input;

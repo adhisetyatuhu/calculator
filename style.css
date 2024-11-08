@@ -34,12 +34,16 @@ body {
 }
 /* --end border */
 
-/* box-shadow when clicked */
+/* box-shadow for click effects */
 .btn-num:active, .btn-ac:active {
     box-shadow: 0 0 5px rgb(201, 201, 201) inset;
 }
 
 .btn-operator:active {
+    box-shadow: 0 0 3px rgb(110, 110, 110) inset;
+}
+
+#backspace:active {
     box-shadow: 0 0 3px rgb(110, 110, 110) inset;
 }
 
@@ -69,8 +73,13 @@ body {
     padding-right: 10px;
 }
 
+#backspace {
+    grid-row: 4 / 5;
+    grid-column: 4 / 5;
+}
+
 #equal {
-    grid-area: 4 / 4 / 8 / 5;
+    grid-area: 5 / 4 / 8 / 5;
     background-color: rgb(240, 117, 29);
 }
 /* --end grid */
@@ -82,7 +91,7 @@ body {
     justify-content: center;
 }
 
-.btn-num, .btn-ac {
+.btn-num, .btn-ac, #backspace {
     background-color: #fff;
 }
 

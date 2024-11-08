@@ -8,6 +8,9 @@ function getValue(node) {
 }
 
 function getLastNum() {
+    /**
+     * get last number from display
+     */
     const value = getValue(displayNode);
     let lastNum = value.split('+').pop();
     lastNum = lastNum.split('-').pop();
@@ -46,6 +49,13 @@ function validateInput(input) {
     }
 
     return displayedValue + input;
+}
+
+function backspace() {
+    let displayValue = getValue(displayNode)
+    if (displayValue.length === 1) return '0';
+
+    return displayValue.slice(0,-1);
 }
 
 function display() {
@@ -90,3 +100,6 @@ document.getElementById('equal').addEventListener('click', calc);
 document.getElementById('ac').addEventListener('click', function() {
     displayNode.textContent = 0;
 });
+document.getElementById('backspace').addEventListener('click', function() {
+    displayNode.textContent = backspace();
+})

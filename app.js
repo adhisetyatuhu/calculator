@@ -1,13 +1,14 @@
 const displayNode = document.getElementById('display');
 const btnNums = document.getElementsByClassName('btn-num');
 const btnOperators = document.getElementsByClassName('btn-operator');
+let inputStatus = 'i';  // 'i': input process, '=': calculation has been executed
 
 function getValue(node) {
     return node.textContent;
 }
 
 function validateInput(input) {
-    /**
+    /**  
      * It will check if the input is valid 
      * and will return the valid displayedValue
      */
@@ -16,7 +17,7 @@ function validateInput(input) {
     
     // if the input is a number then always valid
     if (!isNaN(input)) {
-        if (displayedValue === '0') return input;
+        if (displayedValue === '0' || inputStatus === '=') return input;
         return displayedValue + input;
     } 
 
@@ -39,6 +40,7 @@ function display() {
     const validInput = validateInput(value);
 
     displayNode.textContent = validInput;
+    inputStatus = 'i';
 }
 
 function calc() {
@@ -54,6 +56,7 @@ function calc() {
     
     let result = eval(value.replace('x', '*'));
     displayNode.textContent = result;
+    inputStatus = '=';
 }
 
 /**

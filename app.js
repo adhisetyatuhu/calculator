@@ -41,6 +41,7 @@ function validateInput(input) {
 
     if (input === '.') {
         const lastNum = getLastNum();
+        if (inputStatus === '=') return "0."
         if (lastNum.indexOf('.') >= 0) return displayedValue;
     }
 

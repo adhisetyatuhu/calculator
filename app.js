@@ -34,6 +34,7 @@ function validateInput(input) {
         return displayedValue + input;
     } 
 
+    input = input === '*' ? 'x' : input;
     if (input === 'x' || input === '-' || input === '+' || input === '/') {
         const lastInput = displayedValue.slice(-1);
         // if the last input is not a number then not valid and will be replaced
@@ -83,6 +84,7 @@ function calc() {
     let result = eval(value.replace('x', '*'));
     displayNode.textContent = result;
     inputStatus = '=';
+    return result;
 }
 
 /**
@@ -97,9 +99,64 @@ for (let i=0; i<btnOperators.length; i++) {
 }
 
 document.getElementById('equal').addEventListener('click', calc);
-document.getElementById('ac').addEventListener('click', function() {
+document.getElementById('ac').addEventListener('click', () => {
     displayNode.textContent = 0;
 });
-document.getElementById('backspace').addEventListener('click', function() {
+document.getElementById('backspace').addEventListener('click', () => {
     displayNode.textContent = backspace();
 })
+
+
+// Keyboard input
+
+function validateKey(key) {
+    /**  
+     * It will check if the keyboard input is valid 
+     * and will return the valid displayedValue
+     */
+
+    const displayedValue = getValue(displayNode);
+
+    // only allowed key can proceed
+    if (!(!isNaN(key) || key==='+' || key==='-' || key==='/' || key==='x' || key==='*' || key==='Backspace' || key==='.' || key==='Enter' || key==='=')) return displayedValue; 
+    
+    // if the input is a number then always valid
+    if (!isNaN(key)) {
+        if (displayedValue === '0' || inputStatus === '=') return key;
+        return displayedValue + key;
+    } 
+
+    key = key === '*' ? 'x' : key;
+    if (key === 'x' || key === '-' || key === '+' || key === '/') {
+        const lastInput = displayedValue.slice(-1);
+        // if the last input is not a number then not valid and will be replaced
+        if (isNaN(lastInput)) {
+            return displayedValue.slice(0, -1) + key;  
+        } 
+    }
+
+    if (key === '.') {
+        const lastNum = getLastNum();
+        if (inputStatus === '=') return "0."
+        if (lastNum.indexOf('.') >= 0) return displayedValue;
+    }
+
+    if (key === '=' || key === 'Enter') {
+        return calc();
+    } 
+
+    if (key === 'Backspace') {
+        return backspace();
+    }
+
+    return displayedValue + key;
+}
+
+const inputKey = (e) => {
+    let validValue = validateKey(e.key);
+
+    displayNode.textContent = validValue;
+    inputStatus = 'i';
+}
+
+document.addEventListener('keyup', inputKey);

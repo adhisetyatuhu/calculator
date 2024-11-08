@@ -53,6 +53,7 @@ function validateInput(input) {
 }
 
 function backspace() {
+    // will return string display after backspace
     let displayValue = getValue(displayNode)
     if (displayValue.length === 1) return '0';
 
@@ -152,11 +153,14 @@ function validateKey(key) {
     return displayedValue + key;
 }
 
+// to display keboard input to screen
 const inputKey = (e) => {
     let validValue = validateKey(e.key);
 
     displayNode.textContent = validValue;
-    inputStatus = 'i';
+    if (!(e.key === '=' || e.key === 'Enter')) {
+        inputStatus = 'i';
+    }
 }
 
 document.addEventListener('keyup', inputKey);

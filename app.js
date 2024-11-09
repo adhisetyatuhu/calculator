@@ -91,8 +91,9 @@ function calc() {
     if (isNaN(lastChar)) {
         value = value.slice(0, -1);
     } 
-    
-    let result = eval(value.replace('x', '*'));
+
+    const equation = value.replaceAll('x', '*');
+    const result = eval(equation);
     displayNode.textContent = result;
     return result;
 }

@@ -143,3 +143,15 @@ document.getElementById('ac').addEventListener('click', () => {
 document.getElementById('backspace').addEventListener('click', () => {
     displayNode.textContent = backspace();
 })
+
+
+// Keys for manual
+// create number keys
+const keyNumber = document.getElementById('key-number');
+for (let i=0; i<=9; i++) {
+    const button = document.createElement('button');
+    button.innerText = i;
+    button.classList.add('key-btn');
+
+    keyNumber.appendChild(button);
+}
